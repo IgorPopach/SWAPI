@@ -1,0 +1,10 @@
+// Variables should be defined before vendor (bootstrap) compilation
+@import "./variables.scss";
+
+@import "./vendor/index.scss";
+
+@import "./reset.scss";
+
+@import "./containers/index.scss";
+
+@import "./components/index.scss";

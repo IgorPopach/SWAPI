@@ -1,0 +1,27 @@
+.table-component {
+    width: 60%;
+    height: 50vh;
+    max-height: 100%;
+    position: relative;
+
+    h2 {
+        text-align: center;
+        text-transform: capitalize;
+    }
+}
+
+.table {
+    box-shadow: 0 1px 1px $dark;
+
+    & tbody > tr:nth-child(odd) {
+        background-color: $secondary;
+    }
+    
+    th, td {
+        cursor: pointer;
+    }
+
+    th:hover {
+        background-color: $secondary;
+        }
+}

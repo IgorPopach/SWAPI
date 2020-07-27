@@ -1,0 +1,61 @@
+.details {
+    width: 40%;
+
+    h2 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .list-container {
+        display: flex;
+
+        & > * {
+            margin: 0 5px;
+        }
+
+        &-details {
+            flex: 2;
+        }
+
+        &-links {
+            flex: 1;
+            
+        cursor: pointer;
+        }
+
+
+    }
+
+    .list-group {
+
+        h3 {
+            font-size: 18px;
+            text-transform: capitalize;
+        }
+
+        li > p {
+            margin: 0;
+            font-size: 12px;
+            line-height: 1.5;
+            text-indent: 1em;
+        }
+
+        &-item {
+            padding: 0.2rem 0.5rem;
+
+        }
+
+        &.details-links {
+            h3 {
+            margin: 0;
+            line-height: 1.75;
+        }
+        }
+
+        .badge {
+            border-radius: 3px;
+            line-height: inherit;
+            font-size: inherit;
+        }
+    }
+}

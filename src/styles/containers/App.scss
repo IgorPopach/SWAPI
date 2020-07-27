@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  line-height: 1.75;
+  font-weight: 400;
+  color: $primary;
+  background-color: $secondary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.content {
+  margin-top: calc(#{$header-height} + 2rem);
+
+  h2 {
+    font-size: 24px;
+  }
+}
