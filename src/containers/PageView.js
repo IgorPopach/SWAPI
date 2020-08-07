@@ -26,8 +26,7 @@ const PageView = ({ url, identifier }) => {
 
     const onViewDetails = (id) => {
         const currentItem = categoryData.find(item => item.url === id);
-        convertDetailInfo(category, currentItem)
-            .then(res => setDetailInfo(res));
+        setDetailInfo(convertDetailInfo(category, currentItem));
     }
 
     const sortTableByKey = (key) => {
@@ -76,35 +75,23 @@ const PageView = ({ url, identifier }) => {
     };
 
     useEffect(() => {
-        if (categoriesData && categoriesData[identifier]) {
-            return;
-        }
-        setIsLoading(true);
-        loadData(identifier).then(() => setIsLoading(false))
-    }, [loadData, categoriesData, identifier]);
-
-    useEffect(() => {
-        if (!search) {
-            return;
-        }
-        setIsLoading(true);
         setTableData(null);
+        setCategory(identifier);
+        setIsLoading(true);
         loadData(identifier, { search }).then(() => setIsLoading(false))
-    }, [loadData, identifier, search]);
+    }, [loadData, dispatch, identifier, search]);
 
     useEffect(() => {
-        (async () => {
-            if (categoryData) {
-                const data = await Promise.all(categoryData.map(async (item) => {
-                    const tableInfo = await convertTableInfo(category, item);
-                    return {
-                        id: item.url,
-                        tableInfo
-                    }
-                }));
-                setTableData(data);
-            }
-        })();
+        if (categoryData) {
+            const data = categoryData.map((item) => {
+                const tableInfo = convertTableInfo(category, item);
+                return {
+                    id: item.url,
+                    tableInfo
+                }
+            });
+            setTableData(data);
+        };
     }, [categoryData, category]);
 
     useEffect(() => {
@@ -148,4 +135,4 @@ const PageView = ({ url, identifier }) => {
     );
 };
 
-export default PageView;
+export default React.memo(PageView);

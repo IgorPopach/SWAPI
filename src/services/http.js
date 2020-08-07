@@ -5,10 +5,6 @@ const Methods = {
 
 export const BASE_URL = 'https://swapi.dev/api/';
 
-export const defaultHeaders = {
-    'Content-type': 'application/json; charset=UTF-8',
-};
-
 function toQuery(params) {
     const names = params ? Object.keys(params) : [];
     if (names.length) {
@@ -42,7 +38,6 @@ function onRequestError(response) {
 function getConfig(method, extras = {}, body) {
     const config = {
         ...extras,
-        // headers: Object.assign({}, defaultHeaders, extras.headers),
         method,
     };
     if (body) {

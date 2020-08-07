@@ -8,6 +8,11 @@ import { Provider } from 'react-redux';
 import store from './store';
 import './styles/index.scss';
 
+if (process.env.NODE_ENV !== 'production') {
+  const { whyDidYouUpdate } = require('why-did-you-update')
+  whyDidYouUpdate(React)
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

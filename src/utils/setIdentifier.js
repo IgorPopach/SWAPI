@@ -1,3 +1,7 @@
 export default (path) => {
-    return path.split('/').find(e => e !== '');
+    const arr = path.split('/');
+    if (arr.length === 2) {
+        return arr.find(e => e !== '');
+    }
+    return arr[4];
 };

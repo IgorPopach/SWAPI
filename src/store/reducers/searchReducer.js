@@ -1,7 +1,7 @@
 import { STORE_SEARCH } from '../actions/searchActions';
 
 const initialState = {
-    search: null
+    search: ''
 }
 
 export default (state = initialState, { type, payload }) => {

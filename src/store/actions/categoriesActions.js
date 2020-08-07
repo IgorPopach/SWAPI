@@ -1,4 +1,6 @@
 import http, { BASE_URL } from '../../services/http';
+import { storeUrlData } from './urlDataActions';
+import setIdentifier from '../../utils/setIdentifier';
 
 export const STORE_CATEGORIES = 'STORE_CATEGORIES';
 export const STORE_DATA = 'STORE_DATA';
@@ -36,17 +38,45 @@ export const fetchCategoriesEpic = () => dispatch => {
         );
 };
 
-export const fetchDataEpic = (identifier, params) => async dispatch => {
-    // let params;
-    // if (search) {
-    //     params = { search }
-    // };
-    try {
-        const response = await http.get(`${BASE_URL}${identifier}/`, params);
-        dispatch(storeData(identifier, response))
-    } catch (err) {
-        throw new Error('Something went wrong')
-    }
+export const fetchDataEpic = (identifier, params) => dispatch => {
+    console.log('fetch', identifier, params);
+    http.get(`${BASE_URL}${identifier}/`, params)
+        .then(response => {
+            const checkedUrlInDataValues = response.results.map(item => {
+                for (const key of Object.keys(item)) {
+                    if (key !== 'url' && typeof (item[key]) === 'string' && item[key].includes('http:')) {
+                        const url = item[key].replace('http:', 'https:');
+                        const id = setIdentifier(url);
+                        return http.get(url)
+                            .then(res => {
+                                dispatch(storeUrlData(id, url, res));
+                                let response;
+                                if (res.name) {
+                                    response = res.name;
+                                }
+                                if (res.title) {
+                                    response = res.title;
+                                }
+                                const newObj = { ...item };
+                                newObj[key] = response;
+                                return newObj;
+                            })
+                    }
+                }
+                return item;
+            });
+            return Promise.all(checkedUrlInDataValues)
+                .then(res => {
+                    const data = {
+                        ...response,
+                        results: res
+                    };
+                    dispatch(storeData(identifier, data));
+                })
+                .catch(err => {
+                    throw new Error('Something went wrong')
+                })
+        })
 };
 
 export const fetchLinksDataEpic = (identifier, urls) => async dispatch => {

@@ -4,7 +4,6 @@ import { PlanetDetailsInfo, PlanetDetailsLinks, PlanetTableInfo } from '../model
 import { SpeciesDetailsInfo, SpeciesDetailsLinks, SpeciesTableInfo } from '../models/species';
 import { VehiclesDetailsInfo, VehiclesTableInfo, VehiclesDetailsLinks } from '../models/vehicles';
 import { StarshipsDetailsInfo, StarshipsDetailsLinks, StarshipsTableInfo } from '../models/starships';
-import loadCorrectValue from '../utils/loadCorrectValue';
 
 const CATEGORIES = {
     FILMS: 'films',
@@ -15,18 +14,7 @@ const CATEGORIES = {
     STARSHIPS: 'starships'
 }
 
-const checkUrlInData = async (data) => {
-    for (const key of Object.keys(data)) {
-        if (key !== 'url' && typeof (data[key]) === 'string' && data[key].includes('http:')) {
-            const updatedValue = await loadCorrectValue(data[key]);
-            data[key] = updatedValue;
-        }
-    }
-    return data;
-};
-
-export const convertDetailInfo = async (identifier, data) => {
-    data = await checkUrlInData(data);
+export const convertDetailInfo = (identifier, data) => {
     switch (identifier) {
         case CATEGORIES.FILMS:
             return {
@@ -150,8 +138,7 @@ export const convertDetailInfo = async (identifier, data) => {
     }
 }
 
-export const convertTableInfo = async (identifier, data) => {
-    data = await checkUrlInData(data);
+export const convertTableInfo = (identifier, data) => {
     switch (identifier) {
         case CATEGORIES.FILMS:
             return new FilmTableInfo(data.title, data.episode_id, data.release_date);

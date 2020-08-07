@@ -67,4 +67,4 @@ const Pagination = ({ paginationInfo, onChangeList }) => {
     );
 };
 
-export default Pagination;
+export default React.memo(Pagination);

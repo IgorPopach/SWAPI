@@ -1,8 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import Pagination from './Pagination';
 
 const Table = ({ category, tableData, onViewDetails, onChangeList, paginationInfo, sortTableByKey }) => {
+    if (tableData.length === 0) {
+        return <div className="table-component">
+            <h2>{category}</h2>
+            <h6>There is no data!</h6>
+        </div>
+    }
 
     return (
         <div className="table-component">
