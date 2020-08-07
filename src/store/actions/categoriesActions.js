@@ -81,9 +81,17 @@ export const fetchDataEpic = (identifier, params) => dispatch => {
 
 export const fetchLinksDataEpic = (identifier, urls) => async dispatch => {
     let data = [];
-    for (const url of urls) {
-        const res = await http.get(url);
-        data.push(res);
+    for (let url of urls) {
+        try {
+            if (url.includes('http:')) {
+                url = url.replace('http:', 'https:');
+            }
+            console.log('url', url)
+            const res = await http.get(url);
+            data.push(res);
+        } catch (err) {
+            throw new Error('Something went wrong')
+        }
     }
     dispatch(storeLinkData(identifier, data));
     return data;
