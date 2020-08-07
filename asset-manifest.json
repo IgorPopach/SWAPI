@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/SWAPI/static/css/main.9c3dc47e.chunk.css",
-    "main.js": "/SWAPI/static/js/main.e20a9b54.chunk.js",
-    "main.js.map": "/SWAPI/static/js/main.e20a9b54.chunk.js.map",
+    "main.js": "/SWAPI/static/js/main.2329dcc0.chunk.js",
+    "main.js.map": "/SWAPI/static/js/main.2329dcc0.chunk.js.map",
     "runtime-main.js": "/SWAPI/static/js/runtime-main.bd70a227.js",
     "runtime-main.js.map": "/SWAPI/static/js/runtime-main.bd70a227.js.map",
-    "static/js/2.8a2c4c85.chunk.js": "/SWAPI/static/js/2.8a2c4c85.chunk.js",
-    "static/js/2.8a2c4c85.chunk.js.map": "/SWAPI/static/js/2.8a2c4c85.chunk.js.map",
+    "static/js/2.3cdedacd.chunk.js": "/SWAPI/static/js/2.3cdedacd.chunk.js",
+    "static/js/2.3cdedacd.chunk.js.map": "/SWAPI/static/js/2.3cdedacd.chunk.js.map",
     "index.html": "/SWAPI/index.html",
-    "precache-manifest.21106096a89ec277370d583a223a17eb.js": "/SWAPI/precache-manifest.21106096a89ec277370d583a223a17eb.js",
+    "precache-manifest.a7ea8c47524376c3c0c810fcdacc92bf.js": "/SWAPI/precache-manifest.a7ea8c47524376c3c0c810fcdacc92bf.js",
     "service-worker.js": "/SWAPI/service-worker.js",
     "static/css/main.9c3dc47e.chunk.css.map": "/SWAPI/static/css/main.9c3dc47e.chunk.css.map",
-    "static/js/2.8a2c4c85.chunk.js.LICENSE.txt": "/SWAPI/static/js/2.8a2c4c85.chunk.js.LICENSE.txt"
+    "static/js/2.3cdedacd.chunk.js.LICENSE.txt": "/SWAPI/static/js/2.3cdedacd.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.bd70a227.js",
-    "static/js/2.8a2c4c85.chunk.js",
+    "static/js/2.3cdedacd.chunk.js",
     "static/css/main.9c3dc47e.chunk.css",
-    "static/js/main.e20a9b54.chunk.js"
+    "static/js/main.2329dcc0.chunk.js"
   ]
 }
