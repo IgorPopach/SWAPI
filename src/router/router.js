@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Home from '../components/Home';
 import Films from '../components/Films';
@@ -19,6 +19,7 @@ export default () => (
         <Route path="/species" component={Species} />
         <Route path="/starships" component={Starships} />
         <Route path="/vehicles" component={Vehicles} />
+        <Redirect to="/home" />
     </Switch>
 
 );
